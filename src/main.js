@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 Vue.config.productionTip = false;
+Vue.config.performance = true;
 
 import { extend, localize } from "vee-validate";
 import { required } from "vee-validate/dist/rules";
