@@ -1,23 +1,23 @@
 <template>
     <ValidationObserver ref="observer" tag="form" @submit.prevent="submit" v-slot="{errors}">
-        <InputFieldWithValidation v-model="val1" rules="required"/>
-        <InputFieldWithValidation v-model="val2" rules="required"/>
-        <InputFieldWithValidation v-model="val3" rules="required"/>
-        <InputFieldWithValidation v-model="val4" rules="required"/>
-        <InputFieldWithValidation v-model="val5" rules="required"/>
-        <InputFieldWithValidation v-model="val6" rules="required"/>
-        <InputFieldWithValidation v-model="val7" rules="required"/>
-        <InputFieldWithValidation v-model="val8" rules="required"/>
-        <InputFieldWithValidation v-model="val9" rules="required"/>
-        <InputFieldWithValidation v-model="val11" rules="required"/>
-        <InputFieldWithValidation v-model="val12" rules="required"/>
-        <InputFieldWithValidation v-model="val13" rules="required"/>
-        <InputFieldWithValidation v-model="val14" rules="required"/>
-        <InputFieldWithValidation v-model="val15" rules="required"/>
-        <InputFieldWithValidation v-model="val16" rules="required"/>
-        <InputFieldWithValidation v-model="val17" rules="required"/>
-        <InputFieldWithValidation v-model="val18" rules="required"/>
-        <InputFieldWithValidation v-model="val19" rules="required"/>
+        <InputFieldValidationProvider v-model="val1" rules="required"/>
+        <InputFieldValidationProvider v-model="val2" rules="required"/>
+        <InputFieldValidationProvider v-model="val3" rules="required"/>
+        <InputFieldValidationProvider v-model="val4" rules="required"/>
+        <InputFieldValidationProvider v-model="val5" rules="required"/>
+        <InputFieldValidationProvider v-model="val6" rules="required"/>
+        <InputFieldValidationProvider v-model="val7" rules="required"/>
+        <InputFieldValidationProvider v-model="val8" rules="required"/>
+        <InputFieldValidationProvider v-model="val9" rules="required"/>
+        <InputFieldValidationProvider v-model="val11" rules="required"/>
+        <InputFieldValidationProvider v-model="val12" rules="required"/>
+        <InputFieldValidationProvider v-model="val13" rules="required"/>
+        <InputFieldValidationProvider v-model="val14" rules="required"/>
+        <InputFieldValidationProvider v-model="val15" rules="required"/>
+        <InputFieldValidationProvider v-model="val16" rules="required"/>
+        <InputFieldValidationProvider v-model="val17" rules="required"/>
+        <InputFieldValidationProvider v-model="val18" rules="required"/>
+        <InputFieldValidationProvider v-model="val19" rules="required"/>
 
         <br>
         {{errors}}
@@ -25,25 +25,13 @@
 </template>
 
 <script>
-    import {ValidationObserver, withValidation} from "vee-validate";
-    import InputField from "./InputField";
-
-    function getContext(ctx) {
-        // eslint-disable-next-line no-console
-        // console.log(ctx);
-        return {
-            errors: ctx.errors,
-            invalid: ctx.invalid,
-            required: ctx.required
-        };
-    }
-
-    const InputFieldWithValidation = withValidation(InputField, getContext);
+    import {ValidationObserver} from "vee-validate";
+    import InputFieldValidationProvider from "./InputFieldValidationProvider";
 
     export default {
         name: "Example",
         components: {
-            InputFieldWithValidation,
+            InputFieldValidationProvider,
             ValidationObserver
         },
         data: () => ({
